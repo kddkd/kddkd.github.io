@@ -20,27 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Nginx     1.Nginx         Nginx是一款轻量级的Web 服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器。其特点是占有内存少，并发能力强，事实上nginx的并发能力在同类型的网页服务器中表现较好，中国大陆使用nginx的网站有：百度、京东、新浪、网易、腾讯、淘宝等。     2.Nginx下载与安装     3.常用命令         1.版本号：ng">
+    <meta name="description" content="这几天被克隆问题心态快搞炸了，这里尝试出来了，记录一下步骤：  1.关机，完整克隆； 2.开机克隆机，然后打开 &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33; 3.修改ip为没用过的值； 4.uuid我现在没在这克隆机上面做读写分离，先不动他； 5.保存退出. 6.service network restart； 7.ip addr;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nginx">
-<meta property="og:url" content="http://example.com/2022/07/06/Nginx/index.html">
+<meta property="og:title" content="centos7克隆问题">
+<meta property="og:url" content="http://example.com/2022/07/07/centos7%E5%85%8B%E9%9A%86%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="kddkd&#39;s blog">
-<meta property="og:description" content="Nginx     1.Nginx         Nginx是一款轻量级的Web 服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器。其特点是占有内存少，并发能力强，事实上nginx的并发能力在同类型的网页服务器中表现较好，中国大陆使用nginx的网站有：百度、京东、新浪、网易、腾讯、淘宝等。     2.Nginx下载与安装     3.常用命令         1.版本号：ng">
+<meta property="og:description" content="这几天被克隆问题心态快搞炸了，这里尝试出来了，记录一下步骤：  1.关机，完整克隆； 2.开机克隆机，然后打开 &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33; 3.修改ip为没用过的值； 4.uuid我现在没在这克隆机上面做读写分离，先不动他； 5.保存退出. 6.service network restart； 7.ip addr;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-07-06T09:05:38.000Z">
-<meta property="article:modified_time" content="2022-07-07T07:32:08.017Z">
+<meta property="article:published_time" content="2022-07-07T06:48:32.000Z">
+<meta property="article:modified_time" content="2022-07-07T06:50:53.387Z">
 <meta property="article:author" content="Chen Xu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2022/07/06/Nginx/">
+<link rel="canonical" href="http://example.com/2022/07/07/centos7%E5%85%8B%E9%9A%86%E9%97%AE%E9%A2%98/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/07/06/Nginx/","path":"2022/07/06/Nginx/","title":"Nginx"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/07/07/centos7%E5%85%8B%E9%9A%86%E9%97%AE%E9%A2%98/","path":"2022/07/07/centos7克隆问题/","title":"centos7克隆问题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Nginx | kddkd's blog</title>
+<title>centos7克隆问题 | kddkd's blog</title>
   
 
 
@@ -161,7 +161,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/06/Nginx/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/07/centos7%E5%85%8B%E9%9A%86%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,12 +174,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Nginx | kddkd's blog">
+      <meta itemprop="name" content="centos7克隆问题 | kddkd's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Nginx
+          centos7克隆问题
         </h1>
 
         <div class="post-meta-container">
@@ -189,15 +189,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-07-06 17:05:38" itemprop="dateCreated datePublished" datetime="2022-07-06T17:05:38+08:00">2022-07-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-07-07 15:32:08" itemprop="dateModified" datetime="2022-07-07T15:32:08+08:00">2022-07-07</time>
+      <time title="Created: 2022-07-07 14:48:32 / Modified: 14:50:53" itemprop="dateCreated datePublished" datetime="2022-07-07T14:48:32+08:00">2022-07-07</time>
     </span>
 
   
@@ -210,46 +204,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <pre><code>Nginx
-    1.Nginx
-        Nginx是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。其特点是占有内存少，并发能力强，事实上nginx的并发能力在同类型的网页服务器中表现较好，中国大陆使用nginx的网站有：百度、京东、新浪、网易、腾讯、淘宝等。
-    2.Nginx下载与安装
-    3.常用命令
-        1.版本号：nginx -v;
-        2.检查配置文件正确性：nginx -t;
-        3.启动与停止：
-            启动: ./nginx;
-            停止：./nginx -s stop;
-            查看nginx进程：ps -ef | grep nginx;
-        4.重新加载配置文件：./nginx -s reload;
-    4.配置文件
-        主要分为三个部分：
-        1.全局块：全局配置
-        2.events块：网络配置
-        3.http块：
-            代理，缓存，日志记录，虚拟主机配置
-            1.http全局块：
-            2.service块；
-                1.service全局快：
-                2.location块：
-            http块可以同时配置多个service块，service块可以配置多个location块；
-    5.nginx的应用
-        1.部署静态资源，将静态资源直接放在html文件下即可；
-        2.反向代理：访问代理服务器，甚至都不需要知道目标服务器在哪里都可以；
-            1.在101中部署项目，并且在外面能够测试到；
-            2.配置反向代理，重新访问代理服务器测试；
-            3.妥协了，我用外面的作为目标服务器；
-        3.负载均衡
-            1.在反向代理的基础上，如果我在很多服务器上运行同一个程序，那么可以把代理服务器指向很多服务器，这就是负载均衡；
-            2.负载均衡有很多策略，包括：
-                轮询	默认方式
-                weight	权重方式
-                ip_hash	依据ip分配方式
-                least_conn	依据最少连接方式
-                url_hash	依据url分配方式
-                fair	依据响应时间方式
-                
-            
+        <pre><code>这几天被克隆问题心态快搞炸了，这里尝试出来了，记录一下步骤：
+
+1.关机，完整克隆；
+2.开机克隆机，然后打开 /etc/sysconfig/network-scripts/ifcfg-ens33;
+3.修改ip为没用过的值；
+4.uuid我现在没在这克隆机上面做读写分离，先不动他；
+5.保存退出.
+6.service network restart；
+7.ip addr;
 </code></pre>
 
     </div>
@@ -264,14 +227,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/07/06/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/" rel="prev" title="读写分离">
-                  <i class="fa fa-chevron-left"></i> 读写分离
+                <a href="/2022/07/06/Nginx/" rel="prev" title="Nginx">
+                  <i class="fa fa-chevron-left"></i> Nginx
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/07/07/centos7%E5%85%8B%E9%9A%86%E9%97%AE%E9%A2%98/" rel="next" title="centos7克隆问题">
-                  centos7克隆问题 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
