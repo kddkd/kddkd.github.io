@@ -119,7 +119,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -149,6 +149,104 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/07/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chen Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kddkd's blog">
+      <meta itemprop="description" content="Xu.blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | kddkd's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/07/07/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" class="post-title-link" itemprop="url">前后端分离</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-07-07 19:53:29 / Modified: 22:57:22" itemprop="dateCreated datePublished" datetime="2022-07-07T19:53:29+08:00">2022-07-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <pre><code>前后端分离开发
+    1.前后端分离
+        将整个工程分为前端工程与后端工程，交给不同的人开发；
+    2.YApi
+        得靠自己百度部署了。竟然还得安装nodejs和mongodb;
+        好吧，下不下来，这就是PM的活，咱不干了；
+    3.Swagger
+        用于生成各种接口文档，前面的YApi就可以导入这种，可惜我没部署；
+        knife4j是为Java MVC框架集成Swagger生成Api文档的增强解决方案。
+        使用步骤：
+            1.导入knife4j的maven坐标；
+            2.导入knife4j相关配置类;
+            3.设置静态资源，否则接口文档页面无法访问;
+            4.在LoginCheckFilter中设置不需要处理的请求路径;
+        常用注解，可以在生成的接口文档中加入解释说明，为了更好地写注释，了解一下；
+            1. @Api:用于加在类上；
+            2. @ApiModel：用于加载实体类上；
+            3. @ApiModelProperty：用于加载属性上；
+            4. @ApiOperation：用于加载方法上；
+            5. @ApiImpliciteParams：用于方法上，对于参数进行说明；
+            6. @ApiImpliciteParams：用在@ApiImpliciteParams中，用于对一个参数说明情况；
+    4.项目部署
+        1.部署架构：我前面nginx设置的反向代理不对，先改了再说，改ip就行；
+        2.部署前端；
+        3.部署后端
+        4.不不得不说，校园网是真的牛逼，我以为打包打不完了，竟然十分钟左右给我打完包了，我必须全部做完；
+        5.到此为止，我都改了，包括redis的ip我都改了，但是图片还是不显示，到此为止吧，我好累；
+        6.瑞吉外卖项目，到此结束；
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
