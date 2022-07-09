@@ -119,7 +119,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -149,6 +149,212 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/09/%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chen Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kddkd's blog">
+      <meta itemprop="description" content="Xu.blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | kddkd's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/07/09/%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">数组实现队列</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-07-09 23:08:33 / 修改时间：23:09:16" itemprop="dateCreated datePublished" datetime="2022-07-09T23:08:33+08:00">2022-07-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>package queue;</p>
+<p>import java.util.Scanner;</p>
+<p>&#x2F;**</p>
+<ul>
+<li><p>使用数组实现队列</p>
+</li>
+<li></li>
+<li></li>
+<li><p>1.提供一个队列类，ArrayQueue<br> *&#x2F;<br>public class arrayQueue {<br> public static void main(String[] args) {</p>
+<pre><code> ArrayQueue queue = new ArrayQueue(3);
+ Boolean loop = true;
+ char key = &#39; &#39;;//用于接受用户输入字符
+ Scanner scanner = new Scanner(System.in);
+
+ while(loop)&#123;
+     System.out.println(&quot;s(show):显示队列&quot;);
+     System.out.println(&quot;a(add):添加数据到队列&quot;);
+     System.out.println(&quot;g(get):获取队列数据&quot;);
+     System.out.println(&quot;h(head):显示队列头数据&quot;);
+     System.out.println(&quot;e(exit):退出&quot;);
+     key = scanner.next().charAt(0);
+
+     switch (key)&#123;
+         case &#39;s&#39;:
+             queue.showQueue();
+             break;
+         case &#39;a&#39;:
+             int next = scanner.nextInt();
+             queue.addQueue(next);
+             break;
+         case &#39;g&#39;:
+             try &#123;
+                 int res = queue.getQueue();
+                 System.out.println(&quot;取出的数据为: &quot; + res);
+             &#125;catch (Exception e)&#123;
+                 System.out.println(e.getMessage());
+             &#125;
+             break;
+         case &#39;h&#39;:
+             try &#123;
+                 int res = queue.headQueue();
+                 System.out.println(&quot;取出的数据为: &quot; + res);
+             &#125;catch (Exception e)&#123;
+                 System.out.println(e.getMessage());
+             &#125;
+             break;
+         case &#39;e&#39;:
+             loop = false;
+             break;
+     &#125;
+ &#125;
+</code></pre>
+<p> }</p>
+<p> &#x2F;&#x2F;数组队列类<br> static class ArrayQueue{<br> private int maxSize;&#x2F;&#x2F;队列容量<br> int[] arr;&#x2F;&#x2F;用这个数组实现队列；<br> int front;&#x2F;&#x2F;指向头部前一个位置的数据；<br> int rear;&#x2F;&#x2F;指向尾部数据<br><br><br> public ArrayQueue(int arrMaxSize) {<br>     maxSize &#x3D; arrMaxSize;<br>     arr &#x3D; new int[maxSize];<br>     front &#x3D; -1;<br>     rear &#x3D; -1;<br> }<br><br><br><br>     &#x2F;&#x2F;判断队列是否为空<br><br><br><br> public boolean isEmpty(){<br>    return  front &#x3D;&#x3D; rear;<br> }<br>     &#x2F;&#x2F;判断队列是否为满<br> public boolean isFull(){<br>     return rear &#x3D;&#x3D; maxSize - 1;<br> }<br><br>     &#x2F;&#x2F;向队列加入数据<br><br> public void addQueue(int n){<br>     if(isFull()){<br>         System.out.println(“队列已经满了。。”);<br>         return;<br>     }<br>     rear ++;<br>     arr[rear] &#x3D; n;<br> }<br><br>     &#x2F;&#x2F;从队列取出数据<br> public int getQueue(){<br>     if (isEmpty()){<br>         throw new RuntimeException(“队列为空，无法取出数据<del>“);<br>     }<br>     front ++;<br>     return arr[front];<br> }<br><br>     &#x2F;&#x2F;显式队列头数据，显示出来但是不取出<br><br> public int headQueue(){<br>     if (isEmpty()){<br>         throw new RuntimeException(“队列为空，无法取出数据</del>“);<br>     }<br>     return arr[front + 1];<br> }<br><br> &#x2F;&#x2F;显式队列数据<br><br> public void showQueue(){<br>     if (isEmpty()){<br>         System.out.println(“队列为空..”);<br>         return;<br>     }<br><br>     for (int i &#x3D; 0; i &lt; arr.length;i ++){<br>         System.out.println(arr[i]);<br>     }<br> }<br> }</p>
+</li>
+</ul>
+<p>}</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/09/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chen Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kddkd's blog">
+      <meta itemprop="description" content="Xu.blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | kddkd's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/07/09/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">稀疏数组</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-07-09 23:08:18 / 修改时间：23:08:58" itemprop="dateCreated datePublished" datetime="2022-07-09T23:08:18+08:00">2022-07-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>package sparseArray;</p>
+<p>&#x2F;**</p>
+<ul>
+<li><p>稀疏数组与队列</p>
+</li>
+<li><p>用于压缩数据存储空间<br> *&#x2F;<br>public class Sparsearray {</p>
+<p> &#x2F;*<br> 1.创建原始二维数组；<br> 2.将原始数组转化为稀疏数组；<br> 3.将稀疏数组还原；<br>  *&#x2F;</p>
+<p> public static void main(String[] args) {<br> &#x2F;&#x2F;1.创建原始二维数组；<br> int[][] charsArray &#x3D; new int[11][11];<br> charsArray[1][2] &#x3D; 1;<br> charsArray[2][3] &#x3D; 2;<br> for (int i &#x3D; 0;i &lt; 11; i ++){<br>     for (int j &#x3D; 0; j &lt; 11; j++) {<br>         System.out.print(charsArray[i][j] + “   “);<br>     }<br>     System.out.println();<br> }<br><br> System.out.println(“—————————-“);<br> &#x2F;&#x2F;2.将原始数组转化为稀疏数组；<br> int sum &#x3D; 0;<br> for (int i &#x3D; 0;i &lt; 11; i ++){<br>     for (int j &#x3D; 0; j &lt; 11; j++) {<br>         if(charsArray[i][j] !&#x3D; 0){<br>             sum ++;<br>         }<br>     }<br> }<br><br> int[][] speararray &#x3D; new int[sum + 1][3];<br> speararray[0][0] &#x3D; 11;<br> speararray[0][1] &#x3D; 11;<br> speararray[0][2] &#x3D; sum;<br><br> int count &#x3D; 0;<br> for (int i &#x3D; 0;i &lt; 11; i ++){<br>     for (int j &#x3D; 0; j &lt; 11; j++) {<br>         if(charsArray[i][j] !&#x3D; 0){<br>             count ++;<br>             speararray[count][0] &#x3D; i;<br>             speararray[count][1] &#x3D; j;<br>             speararray[count][2] &#x3D; charsArray[i][j];<br>         }<br>     }<br> }<br><br><br> for (int i &#x3D; 0;i &lt; speararray.length;i ++){<br>     for (int j &#x3D; 0; j &lt; 3; j++) {<br>         System.out.print(speararray[i][j] + “   “);<br>     }<br>     System.out.println();<br> }<br> System.out.println(“—————————-“);<br><br> &#x2F;&#x2F;3.将稀疏数组还原；<br> int[][] chararray &#x3D; new int[speararray[0][0]][speararray[0][1]];<br> for (int i &#x3D; 1; i &lt; speararray.length; i++) {<br>     chararray[speararray[i][0]][speararray[i][1]] &#x3D; speararray[i][2];<br> }<br><br> for (int i &#x3D; 0;i &lt; 11; i ++){<br>     for (int j &#x3D; 0; j &lt; 11; j++) {<br>         System.out.print(chararray[i][j] + “   “);<br>     }<br>     System.out.println();<br> }<br> }</p>
+</li>
+</ul>
+<p>}</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1087,156 +1293,9 @@ day1 -&gt; 缓存优化
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/05/Init/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Chen Xu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kddkd's blog">
-      <meta itemprop="description" content="Xu.blog">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | kddkd's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/05/Init/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-07-05 20:32:57" itemprop="dateCreated datePublished" datetime="2022-07-05T20:32:57+08:00">2022-07-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="搭建个人博客"><a href="#搭建个人博客" class="headerlink" title="搭建个人博客"></a>搭建个人博客</h2><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h2 id="内容-1"><a href="#内容-1" class="headerlink" title="内容"></a>内容</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>kddkd.github.io</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/05/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Chen Xu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kddkd's blog">
-      <meta itemprop="description" content="Xu.blog">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | kddkd's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/05/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-07-05 15:36:08" itemprop="dateCreated datePublished" datetime="2022-07-05T15:36:08+08:00">2022-07-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 </div>
   </main>
@@ -1253,7 +1312,7 @@ day1 -&gt; 缓存优化
   </span>
   <span class="author" itemprop="copyrightHolder">Chen Xu</span>
 </div>
-  <div class="powered-by"><a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> এর সাহায্যে চলছে
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
     </div>
