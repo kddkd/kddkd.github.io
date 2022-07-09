@@ -314,7 +314,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-07-09 23:08:18 / 修改时间：23:08:58" itemprop="dateCreated datePublished" datetime="2022-07-09T23:08:18+08:00">2022-07-09</time>
+      <time title="创建时间：2022-07-09 23:08:18 / 修改时间：23:12:28" itemprop="dateCreated datePublished" datetime="2022-07-09T23:08:18+08:00">2022-07-09</time>
     </span>
 
   
@@ -328,16 +328,82 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>package sparseArray;</p>
-<p>&#x2F;**</p>
-<ul>
-<li><p>稀疏数组与队列</p>
-</li>
-<li><p>用于压缩数据存储空间<br> *&#x2F;<br>public class Sparsearray {</p>
-<p> &#x2F;*<br> 1.创建原始二维数组；<br> 2.将原始数组转化为稀疏数组；<br> 3.将稀疏数组还原；<br>  *&#x2F;</p>
-<p> public static void main(String[] args) {<br> &#x2F;&#x2F;1.创建原始二维数组；<br> int[][] charsArray &#x3D; new int[11][11];<br> charsArray[1][2] &#x3D; 1;<br> charsArray[2][3] &#x3D; 2;<br> for (int i &#x3D; 0;i &lt; 11; i ++){<br>     for (int j &#x3D; 0; j &lt; 11; j++) {<br>         System.out.print(charsArray[i][j] + “   “);<br>     }<br>     System.out.println();<br> }<br><br> System.out.println(“—————————-“);<br> &#x2F;&#x2F;2.将原始数组转化为稀疏数组；<br> int sum &#x3D; 0;<br> for (int i &#x3D; 0;i &lt; 11; i ++){<br>     for (int j &#x3D; 0; j &lt; 11; j++) {<br>         if(charsArray[i][j] !&#x3D; 0){<br>             sum ++;<br>         }<br>     }<br> }<br><br> int[][] speararray &#x3D; new int[sum + 1][3];<br> speararray[0][0] &#x3D; 11;<br> speararray[0][1] &#x3D; 11;<br> speararray[0][2] &#x3D; sum;<br><br> int count &#x3D; 0;<br> for (int i &#x3D; 0;i &lt; 11; i ++){<br>     for (int j &#x3D; 0; j &lt; 11; j++) {<br>         if(charsArray[i][j] !&#x3D; 0){<br>             count ++;<br>             speararray[count][0] &#x3D; i;<br>             speararray[count][1] &#x3D; j;<br>             speararray[count][2] &#x3D; charsArray[i][j];<br>         }<br>     }<br> }<br><br><br> for (int i &#x3D; 0;i &lt; speararray.length;i ++){<br>     for (int j &#x3D; 0; j &lt; 3; j++) {<br>         System.out.print(speararray[i][j] + “   “);<br>     }<br>     System.out.println();<br> }<br> System.out.println(“—————————-“);<br><br> &#x2F;&#x2F;3.将稀疏数组还原；<br> int[][] chararray &#x3D; new int[speararray[0][0]][speararray[0][1]];<br> for (int i &#x3D; 1; i &lt; speararray.length; i++) {<br>     chararray[speararray[i][0]][speararray[i][1]] &#x3D; speararray[i][2];<br> }<br><br> for (int i &#x3D; 0;i &lt; 11; i ++){<br>     for (int j &#x3D; 0; j &lt; 11; j++) {<br>         System.out.print(chararray[i][j] + “   “);<br>     }<br>     System.out.println();<br> }<br> }</p>
-</li>
-</ul>
-<p>}</p>
+<pre><code>/**
+ * 稀疏数组与队列
+ * 用于压缩数据存储空间
+ */
+    public class Sparsearray &#123;
+
+    /*
+        1.创建原始二维数组；
+        2.将原始数组转化为稀疏数组；
+        3.将稀疏数组还原；
+     */
+
+    public static void main(String[] args) &#123;
+        //1.创建原始二维数组；
+        int[][] charsArray = new int[11][11];
+        charsArray[1][2] = 1;
+        charsArray[2][3] = 2;
+        for (int i = 0;i &lt; 11; i ++)&#123;
+            for (int j = 0; j &lt; 11; j++) &#123;
+                System.out.print(charsArray[i][j] + &quot;   &quot;);
+            &#125;
+            System.out.println();
+        &#125;
+
+        System.out.println(&quot;----------------------------&quot;);
+        //2.将原始数组转化为稀疏数组；
+        int sum = 0;
+        for (int i = 0;i &lt; 11; i ++)&#123;
+            for (int j = 0; j &lt; 11; j++) &#123;
+                if(charsArray[i][j] != 0)&#123;
+                    sum ++;
+                &#125;
+            &#125;
+        &#125;
+
+        int[][] speararray = new int[sum + 1][3];
+        speararray[0][0] = 11;
+        speararray[0][1] = 11;
+        speararray[0][2] = sum;
+
+        int count = 0;
+        for (int i = 0;i &lt; 11; i ++)&#123;
+            for (int j = 0; j &lt; 11; j++) &#123;
+                if(charsArray[i][j] != 0)&#123;
+                    count ++;
+                    speararray[count][0] = i;
+                    speararray[count][1] = j;
+                    speararray[count][2] = charsArray[i][j];
+                &#125;
+            &#125;
+        &#125;
+
+
+        for (int i = 0;i &lt; speararray.length;i ++)&#123;
+            for (int j = 0; j &lt; 3; j++) &#123;
+                System.out.print(speararray[i][j] + &quot;   &quot;);
+            &#125;
+            System.out.println();
+        &#125;
+        System.out.println(&quot;----------------------------&quot;);
+
+        //3.将稀疏数组还原；
+        int[][] chararray = new int[speararray[0][0]][speararray[0][1]];
+        for (int i = 1; i &lt; speararray.length; i++) &#123;
+            chararray[speararray[i][0]][speararray[i][1]] = speararray[i][2];
+        &#125;
+
+        for (int i = 0;i &lt; 11; i ++)&#123;
+            for (int j = 0; j &lt; 11; j++) &#123;
+                System.out.print(chararray[i][j] + &quot;   &quot;);
+            &#125;
+            System.out.println();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
 
       
     </div>
