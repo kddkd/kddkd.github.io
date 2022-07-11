@@ -20,27 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.12.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="package sparseArray; &#x2F;**  * 稀疏数组与队列  * 用于压缩数据存储空间  *&#x2F;     public class Sparsearray &amp;#123;      &#x2F;*         1.创建原始二维数组；         2.将原始数组转化为稀疏数组；         3.将稀疏数组还原；      *&#x2F;      public static void main(St">
+    <meta name="description" content="package doubleLinkedList;      &#x2F;**      * 双向链表的基础操作：增删改查      *&#x2F;     public class DoubleLinkedList &amp;#123;         public static void main(String[] args) &amp;#123;             HeroNode2 heroNode1 &#x3D; ne">
 <meta property="og:type" content="article">
-<meta property="og:title" content="稀疏数组">
-<meta property="og:url" content="http://example.com/2022/07/09/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:title" content="双链表基本操作">
+<meta property="og:url" content="http://example.com/2022/07/11/%E5%8F%8C%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="kddkd&#39;s blog">
-<meta property="og:description" content="package sparseArray; &#x2F;**  * 稀疏数组与队列  * 用于压缩数据存储空间  *&#x2F;     public class Sparsearray &amp;#123;      &#x2F;*         1.创建原始二维数组；         2.将原始数组转化为稀疏数组；         3.将稀疏数组还原；      *&#x2F;      public static void main(St">
+<meta property="og:description" content="package doubleLinkedList;      &#x2F;**      * 双向链表的基础操作：增删改查      *&#x2F;     public class DoubleLinkedList &amp;#123;         public static void main(String[] args) &amp;#123;             HeroNode2 heroNode1 &#x3D; ne">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-07-09T15:08:18.000Z">
-<meta property="article:modified_time" content="2022-07-09T15:12:28.955Z">
+<meta property="article:published_time" content="2022-07-11T15:47:08.000Z">
+<meta property="article:modified_time" content="2022-07-11T15:47:34.017Z">
 <meta property="article:author" content="Chen Xu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2022/07/09/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">
+<link rel="canonical" href="http://example.com/2022/07/11/%E5%8F%8C%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/07/09/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/","path":"2022/07/09/稀疏数组/","title":"稀疏数组"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/07/11/%E5%8F%8C%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/","path":"2022/07/11/双链表基本操作/","title":"双链表基本操作"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>稀疏数组 | kddkd's blog</title>
+<title>双链表基本操作 | kddkd's blog</title>
   
 
 
@@ -161,7 +161,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/09/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/11/%E5%8F%8C%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,12 +174,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="稀疏数组 | kddkd's blog">
+      <meta itemprop="name" content="双链表基本操作 | kddkd's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          稀疏数组
+          双链表基本操作
         </h1>
 
         <div class="post-meta-container">
@@ -191,7 +191,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-07-09 23:08:18 / 修改时间：23:12:28" itemprop="dateCreated datePublished" datetime="2022-07-09T23:08:18+08:00">2022-07-09</time>
+      <time title="创建时间：2022-07-11 23:47:08 / 修改时间：23:47:34" itemprop="dateCreated datePublished" datetime="2022-07-11T23:47:08+08:00">2022-07-11</time>
     </span>
 
   
@@ -204,82 +204,163 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>package sparseArray;</p>
-<pre><code>/**
- * 稀疏数组与队列
- * 用于压缩数据存储空间
- */
-    public class Sparsearray &#123;
+        <pre><code>    package doubleLinkedList;
 
-    /*
-        1.创建原始二维数组；
-        2.将原始数组转化为稀疏数组；
-        3.将稀疏数组还原；
+    /**
+     * 双向链表的基础操作：增删改查
      */
-
-    public static void main(String[] args) &#123;
-        //1.创建原始二维数组；
-        int[][] charsArray = new int[11][11];
-        charsArray[1][2] = 1;
-        charsArray[2][3] = 2;
-        for (int i = 0;i &lt; 11; i ++)&#123;
-            for (int j = 0; j &lt; 11; j++) &#123;
-                System.out.print(charsArray[i][j] + &quot;   &quot;);
-            &#125;
-            System.out.println();
-        &#125;
-
-        System.out.println(&quot;----------------------------&quot;);
-        //2.将原始数组转化为稀疏数组；
-        int sum = 0;
-        for (int i = 0;i &lt; 11; i ++)&#123;
-            for (int j = 0; j &lt; 11; j++) &#123;
-                if(charsArray[i][j] != 0)&#123;
-                    sum ++;
-                &#125;
-            &#125;
-        &#125;
-
-        int[][] speararray = new int[sum + 1][3];
-        speararray[0][0] = 11;
-        speararray[0][1] = 11;
-        speararray[0][2] = sum;
-
-        int count = 0;
-        for (int i = 0;i &lt; 11; i ++)&#123;
-            for (int j = 0; j &lt; 11; j++) &#123;
-                if(charsArray[i][j] != 0)&#123;
-                    count ++;
-                    speararray[count][0] = i;
-                    speararray[count][1] = j;
-                    speararray[count][2] = charsArray[i][j];
-                &#125;
-            &#125;
-        &#125;
-
-
-        for (int i = 0;i &lt; speararray.length;i ++)&#123;
-            for (int j = 0; j &lt; 3; j++) &#123;
-                System.out.print(speararray[i][j] + &quot;   &quot;);
-            &#125;
-            System.out.println();
-        &#125;
-        System.out.println(&quot;----------------------------&quot;);
-
-        //3.将稀疏数组还原；
-        int[][] chararray = new int[speararray[0][0]][speararray[0][1]];
-        for (int i = 1; i &lt; speararray.length; i++) &#123;
-            chararray[speararray[i][0]][speararray[i][1]] = speararray[i][2];
-        &#125;
-
-        for (int i = 0;i &lt; 11; i ++)&#123;
-            for (int j = 0; j &lt; 11; j++) &#123;
-                System.out.print(chararray[i][j] + &quot;   &quot;);
-            &#125;
-            System.out.println();
+    public class DoubleLinkedList &#123;
+        public static void main(String[] args) &#123;
+            HeroNode2 heroNode1 = new HeroNode2(1,&quot;宋江&quot;,&quot;及时雨&quot;);
+            HeroNode2 heroNode2 = new HeroNode2(2,&quot;吴用&quot;,&quot;智多星&quot;);
+            HeroNode2 heroNode3 = new HeroNode2(3,&quot;卢俊义&quot;,&quot;玉麒麟&quot;);
+            HeroNode2 heroNode4 = new HeroNode2(4,&quot;林冲&quot;,&quot;豹子头&quot;);
+            HeroNode2 heroNode5 = new HeroNode2(2,&quot;陈旭&quot;,&quot;kddkd&quot;);
+            DoubleList doubleList = new DoubleList();
+            doubleList.add(heroNode1);
+            doubleList.add(heroNode2);
+            doubleList.add(heroNode3);
+            doubleList.add(heroNode4);
+            doubleList.showList();
+            System.out.println(&quot;--------------&quot;);
+            doubleList.update(heroNode5);
+            doubleList.showList();
+            System.out.println(&quot;--------------&quot;);
+            doubleList.delete(2);
+            doubleList.showList();
+            System.out.println(&quot;--------------&quot;);
         &#125;
     &#125;
-&#125;
+
+
+    class DoubleList&#123;
+        //创建一个头节点，不存放数据
+        private HeroNode2 head = new HeroNode2(0,&quot;&quot;,&quot;&quot;);
+
+        public HeroNode2 getHead() &#123;
+            return head;
+        &#125;
+
+        //添加链表
+        public void add(HeroNode2 heroNode)&#123;
+            HeroNode2 temp = head;
+            //找到链表末尾，接上去即可
+            while(true)&#123;
+                if(temp.next == null)&#123;
+                    break;
+                &#125;
+                temp = temp.next;
+            &#125;
+            temp.next = heroNode;
+            heroNode.pre = temp;//双向链表的pre需要指回去
+        &#125;
+
+        //修改元素信息，根据no修改
+        public void update(HeroNode2 heroNode)&#123;
+            if(head.next == null)&#123;
+                System.out.println(&quot;链表为空，无法修改...&quot;);
+                return;
+            &#125;
+            boolean flag = false;
+            HeroNode2 temp = head.next;
+            while(true)&#123;
+                if(temp.no == heroNode.no)&#123;
+                    flag = true;
+                    break;
+                &#125;
+
+                if (temp.next == null)&#123;
+                    break;//没找到相同no
+                &#125;
+                temp = temp.next;
+            &#125;
+
+            if (flag)&#123;
+                temp.name = heroNode.name;
+                temp.nickName = heroNode.nickName;
+            &#125;else &#123;
+                System.out.println(&quot;链表无此节点。。。&quot;);
+            &#125;
+        &#125;
+
+
+        //根据no删除节点
+        //没有这个节点就提示
+        public void delete(int no)&#123;
+            //对于双向链表，我可以直接找到需要删除的节点
+            if (head.next == null)&#123;
+                System.out.println(&quot;空链表，无法删除节点...&quot;);
+            &#125;
+
+            HeroNode2 temp = head.next;
+            boolean flag = false;
+
+            while(true)&#123;
+                if (temp == null)&#123;
+                    break;//遍历到末尾没找到
+                &#125;
+
+                if(temp.no == no)&#123;
+                    flag = true;
+                    break;
+                &#125;
+
+                temp = temp.next;
+
+            &#125;
+
+            if (flag)&#123;
+                //删除
+                temp.pre.next = temp.next;
+                if(temp.next != null)&#123;
+                    temp.next.pre = temp.pre;
+                &#125;
+            &#125;else &#123;
+                System.out.println(&quot;当前节点不存在...&quot;);
+            &#125;
+        &#125;
+
+        //显式链表
+        public void showList()&#123;
+
+            if(head.next == null)&#123;
+                System.out.println(&quot;链表为空...&quot;);
+            &#125;
+            HeroNode2 temp = head.next;
+            //遍历显示temp元素
+            while(true)&#123;
+                if (temp == null)&#123;
+                    break;
+                &#125;
+
+                System.out.println(temp);
+                temp = temp.next;
+            &#125;
+        &#125;
+    &#125;
+
+    class HeroNode2&#123;
+        int no;//编号
+        String name;//姓名
+        String nickName;//外号
+        HeroNode2 next;//指向下一个
+        HeroNode2 pre;
+
+        public HeroNode2(int hNo,String hName,String hNickName)&#123;
+            this.no = hNo;
+            this.name = hName;
+            this.nickName = hNickName;
+        &#125;
+
+        @Override
+        public String toString() &#123;
+            return &quot;HeroNode&#123;&quot; +
+                    &quot;no=&quot; + no +
+                    &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                    &quot;, nickName=&#39;&quot; + nickName + &#39;\&#39;&#39; +
+                    &#39;&#125;&#39;;
+        &#125;
+    &#125;
 </code></pre>
 
     </div>
@@ -294,14 +375,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/07/07/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" rel="prev" title="前后端分离">
-                  <i class="fa fa-chevron-left"></i> 前后端分离
+                <a href="/2022/07/11/%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" rel="prev" title="单链表的增删改查">
+                  <i class="fa fa-chevron-left"></i> 单链表的增删改查
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/07/09/%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/" rel="next" title="数组实现队列">
-                  数组实现队列 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

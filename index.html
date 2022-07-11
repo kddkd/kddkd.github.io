@@ -119,7 +119,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -149,6 +149,233 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/11/%E5%8F%8C%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chen Xu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kddkd's blog">
+      <meta itemprop="description" content="Xu.blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | kddkd's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/07/11/%E5%8F%8C%E9%93%BE%E8%A1%A8%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">双链表基本操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-07-11 23:47:08 / 修改时间：23:47:34" itemprop="dateCreated datePublished" datetime="2022-07-11T23:47:08+08:00">2022-07-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <pre><code>    package doubleLinkedList;
+
+    /**
+     * 双向链表的基础操作：增删改查
+     */
+    public class DoubleLinkedList &#123;
+        public static void main(String[] args) &#123;
+            HeroNode2 heroNode1 = new HeroNode2(1,&quot;宋江&quot;,&quot;及时雨&quot;);
+            HeroNode2 heroNode2 = new HeroNode2(2,&quot;吴用&quot;,&quot;智多星&quot;);
+            HeroNode2 heroNode3 = new HeroNode2(3,&quot;卢俊义&quot;,&quot;玉麒麟&quot;);
+            HeroNode2 heroNode4 = new HeroNode2(4,&quot;林冲&quot;,&quot;豹子头&quot;);
+            HeroNode2 heroNode5 = new HeroNode2(2,&quot;陈旭&quot;,&quot;kddkd&quot;);
+            DoubleList doubleList = new DoubleList();
+            doubleList.add(heroNode1);
+            doubleList.add(heroNode2);
+            doubleList.add(heroNode3);
+            doubleList.add(heroNode4);
+            doubleList.showList();
+            System.out.println(&quot;--------------&quot;);
+            doubleList.update(heroNode5);
+            doubleList.showList();
+            System.out.println(&quot;--------------&quot;);
+            doubleList.delete(2);
+            doubleList.showList();
+            System.out.println(&quot;--------------&quot;);
+        &#125;
+    &#125;
+
+
+    class DoubleList&#123;
+        //创建一个头节点，不存放数据
+        private HeroNode2 head = new HeroNode2(0,&quot;&quot;,&quot;&quot;);
+
+        public HeroNode2 getHead() &#123;
+            return head;
+        &#125;
+
+        //添加链表
+        public void add(HeroNode2 heroNode)&#123;
+            HeroNode2 temp = head;
+            //找到链表末尾，接上去即可
+            while(true)&#123;
+                if(temp.next == null)&#123;
+                    break;
+                &#125;
+                temp = temp.next;
+            &#125;
+            temp.next = heroNode;
+            heroNode.pre = temp;//双向链表的pre需要指回去
+        &#125;
+
+        //修改元素信息，根据no修改
+        public void update(HeroNode2 heroNode)&#123;
+            if(head.next == null)&#123;
+                System.out.println(&quot;链表为空，无法修改...&quot;);
+                return;
+            &#125;
+            boolean flag = false;
+            HeroNode2 temp = head.next;
+            while(true)&#123;
+                if(temp.no == heroNode.no)&#123;
+                    flag = true;
+                    break;
+                &#125;
+
+                if (temp.next == null)&#123;
+                    break;//没找到相同no
+                &#125;
+                temp = temp.next;
+            &#125;
+
+            if (flag)&#123;
+                temp.name = heroNode.name;
+                temp.nickName = heroNode.nickName;
+            &#125;else &#123;
+                System.out.println(&quot;链表无此节点。。。&quot;);
+            &#125;
+        &#125;
+
+
+        //根据no删除节点
+        //没有这个节点就提示
+        public void delete(int no)&#123;
+            //对于双向链表，我可以直接找到需要删除的节点
+            if (head.next == null)&#123;
+                System.out.println(&quot;空链表，无法删除节点...&quot;);
+            &#125;
+
+            HeroNode2 temp = head.next;
+            boolean flag = false;
+
+            while(true)&#123;
+                if (temp == null)&#123;
+                    break;//遍历到末尾没找到
+                &#125;
+
+                if(temp.no == no)&#123;
+                    flag = true;
+                    break;
+                &#125;
+
+                temp = temp.next;
+
+            &#125;
+
+            if (flag)&#123;
+                //删除
+                temp.pre.next = temp.next;
+                if(temp.next != null)&#123;
+                    temp.next.pre = temp.pre;
+                &#125;
+            &#125;else &#123;
+                System.out.println(&quot;当前节点不存在...&quot;);
+            &#125;
+        &#125;
+
+        //显式链表
+        public void showList()&#123;
+
+            if(head.next == null)&#123;
+                System.out.println(&quot;链表为空...&quot;);
+            &#125;
+            HeroNode2 temp = head.next;
+            //遍历显示temp元素
+            while(true)&#123;
+                if (temp == null)&#123;
+                    break;
+                &#125;
+
+                System.out.println(temp);
+                temp = temp.next;
+            &#125;
+        &#125;
+    &#125;
+
+    class HeroNode2&#123;
+        int no;//编号
+        String name;//姓名
+        String nickName;//外号
+        HeroNode2 next;//指向下一个
+        HeroNode2 pre;
+
+        public HeroNode2(int hNo,String hName,String hNickName)&#123;
+            this.no = hNo;
+            this.name = hName;
+            this.nickName = hNickName;
+        &#125;
+
+        @Override
+        public String toString() &#123;
+            return &quot;HeroNode&#123;&quot; +
+                    &quot;no=&quot; + no +
+                    &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                    &quot;, nickName=&#39;&quot; + nickName + &#39;\&#39;&#39; +
+                    &#39;&#125;&#39;;
+        &#125;
+    &#125;
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1333,334 +1560,6 @@ public void addQueue(int n)&#123;
 </code></pre>
 <hr>
 <pre><code>http://kddkd.top
-</code></pre>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/05/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Chen Xu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kddkd's blog">
-      <meta itemprop="description" content="Xu.blog">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | kddkd's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/07/05/%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-07-05 21:35:51 / 修改时间：10:27:58" itemprop="dateCreated datePublished" datetime="2022-07-05T21:35:51+08:00">2022-07-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <pre><code>瑞吉外卖
-    1.搭建开发环境
-        1.导入数据库；
-        2.创建maven环境
-    2.登录功能实现
-        1.需求分析；
-            从前端提供代码来看，我后台给出的数据应该为json格式，需要包含：res.code,res.data,res.msg;
-        2.代码开发；
-            1.创建实体类enetity -&gt; Employee;
-            2.搭建基本mvc三层架构；使用mp快速开发；
-            3.设置返回到前端的结果：R；
-            4.分为：1.判断用户名；判断密码；判断是否被禁用完成登录；
-        3.测试；
-    3.退出功能
-        1.remove存入到session的Id；
-        2.返回退出成功信息；
-第二天
-    1.完善登录功能
-        我不登陆直接输入url也是可以进入的，这不能容忍；
-            1.没登陆访问后面的url必须得跳转到登陆页面；
-            2.设置拦截器
-                1.创建一个拦截器类，加上注解成为拦截器类，配置拦截路径；
-                2.输出一下日志，看有没有拦截到，在application.java中扫描；
-                3.完成拦截器逻辑；
-    2.新增用户
-        1.点击新增用户之后，跳转到新增页面，点击添加之后就会将表单数据提交到数据库的employee表中，默认设置status=1;
-        2.程序执行流程
-            1.前端发送ajax请求，传递json数据到后台；
-            2.controller接收到参数之后交给service；
-            3.service调用mapper保存到数据库；
-        3.由于数据库给username加了唯一约束，因此用户名重复就会抛出异常，我是用全局异常处理器完成抓异常；
-    3.员工信息的分页查询
-        1.需求分析
-            员工很多的时候，一页显式出来太杂乱了，因此引入分页查询；而且还有一个搜索框，搜索框搜出来的内容，也需要分页查询；
-        2.代码开发
-            1.当打开页面的时候，会使用钩子函数，直接访问：
-                http://localhost:8080/employee/page?page=1&amp;pageSize=10；
-            2.使用mybatis-plus的分页插件进行分页功能的开发；
-            3.设置分页拦截器；
-            4.
-        3.功能测试
-    4.员工账号状态信息切换
-        员工的状态分为启用与禁用，对应于数据库的status字段。请求发送的url是/employee，方式为put;
-        前端好像工作量，比后端的程序员高多了。他们需要根据返回的数据，判断页面应该显示什么。具体代码我可以不知道怎么写，但是我需要知道怎么实现的。首先是管理员就可以修改别人的权限，那是因为从userInfo中取出来name判断是不是&quot;admin&quot;，然后最后一列编辑判断一下要不要显示。
-        对于已禁用的用户，需要显示启用按钮，对于正常用户，显式禁用按钮，根据后端返回的数据中的status判断显式哪一种就好。
-        接下来开始写后端代码。
-        由于前端传过来的数据，由于精度丢失，会造成传过来的id不对，如果转换成字符串就不会出现这个问题。
-        我需要配置一个消息类型转换器。
-    5.编辑员工信息
-        分为两步，1.根据id查询数据并且回显；2.执行更新语句；
-        主要是人家给的模板写的太多了，我只需要写很少一部分；
-第三天
-    1.公共字段填充
-        每次都要设置创建时间，更新时间，创建人，更新人，很麻烦，我可以使用公共字段填充这四个值即可；
-        1.在实体类对应的字段上面，加上@TableField指定填充策略；
-        2.创建MyMetaObjectHandler类实现MetaObjectHandler接口，重写里面的方法，然后实现填充的功能即可；
-    2.但是，上面我设置的用户ID，是固定死的为1，这是不应该的，因此我需要动态的获取用户id，但是，我找不到session怎么办；
-        1.当客户端发起一次请求，服务器端就会创建一个线程，完成请求的所有内容，举例说明就是：doFilter -&gt; EmployeeController -&gt; MyMetaObjectHandler;
-        2.既然是同一个线程，那么就有一个线程属性ThreadLocal,我可以在controller里面set用户id进去，到后边使用id的时候，get即可；
-        3.编写一个BaseContext类，用于封装TheradLocal；
-    3.新增菜品与套餐分类：视频中没有设置当前用户id到Theradlocal这一步我给添加上了；
-    4.新增页面数据分页查询；
-    5.删除指定用户，当删除到被关联的菜品时，删除失败；
-    6.优化删除，当删除的分类中存在选项时，抛出一个业务异常；
-        1.导入Setmeal与Dish实体类；
-        2.创建mapper，service，serviceImpl；
-        3.重写removeById方法，在CategoryService里面写；
-        4.自定义异常CustomException；
-        5.处理自定义异常;
-        6.controller调用重写的remove方法；
-        7.测试；
-        8.有一个菜直接被我不小心删除了，我得找回来！！！
-    7.修改分类
-        1.数据回显人家已经做好了，我只在后端写代码修改就好了；
-        2.注意需要加上修改时间与修改人;
-第四天
-    1.文件上传与下载
-        由于上传菜品需要图片，因此需要搞一个文件上传与下载；
-        1.导入upload.html页面；
-        2.从前台先能访问到这个页面再说；
-        3.观看他提交的路径；
-        4.开始一步一步改进后端代码；
-            1.能接收到并且保存就算成功；
-            2.我要更改路径，不能直接写死；
-            3.指定文件夹不一定被我写出来了，因此我要判断一下；
-            4.返回值需要返回文件名称；
-        5.文件下载
-            路径：/common/download;get方式请求的；
-            需要通过输入流输出流的方法来将图片下载到页面上；
-    2.菜品新增功能
-        看写的小标题简单吧，但是，接下来的很多操作太多了太多了，我要干完！！1
-        1.先吧DishFlavor这两张表导入工程，搭好基本框架；
-        2.看一下请求的路径，需要什么；对应的前端页面：page -&gt; food -&gt; add.html
-        3.首先遇到了，菜品分类，需要请求：http://localhost:8080/category/list?type=1；
-            1.解决它，在CategoryController解决它，直接查询返回list集合，使用category实体类封装；
-            2.文件上传于下载功能已经做了；
-        4.把信息都填上，然后提交一下请求，观察其请求路径与请求方式；
-            /dish;Post;
-        5.开始查看请求的json数据，这一段很麻烦，坚持过去！！！
-            1.json数据，有dish类的，有dishFlavor的；我需要使用dto来接受请求的参数；
-            2.重写dishService的方法并且将请求数据添加到对应的表中；
-            3.需要注意的是，dishFlavor的菜品id，dto里面是没有的，因此我需要自己把菜的id设置进去；
-    3.菜品管理的分页查询
-        1.先把基本框架搭出来；
-            请求路径：	http://localhost:8080/dish/page?page=1&amp;pageSize=10；
-            请求方式： GET
-        2.可以看到，菜品分类是不显示的，那是因为我返回的dish根本就没有categoryName这一个数据；因此我可以使用DishDto来完成数据传过去；
-        3.那么就需要对业务进一步处理了。
-            1.将数据拷贝到：pageInfo -&gt; dtoPage;
-            2.由于泛型不一样，需要将records排除在外拷贝；
-    4.新增菜品
-        1.新增菜品的话，需要几个步骤：
-        2.将菜品分类给显示出来，这个自己做完了；
-        3.将数据回显回来；
-            1.根据Id查询数据；看人家传过来的数据是什么样的以及请求路径；
-                GET http://localhost:8080/dish/1534448384021200898
-            2.先把架子打出来；
-            3.分别查询dish与dishFlavor表并且将数据封装到dishDto；
-        4.将图片下载过来，也做完了；
-        5.点击保存就会修改数据；
-            1.点击保存按钮，查看请求方式与路径：Put, /dish
-            2.搭出基本框架；
-            3.实现修改dto的方法并且返回R(String);
-    5.额外新增停售
-        1.观察前端代码；
-        2.思路分析
-        3.前端发给我一个id，我修改此id对应的dish的状态就好了，但是是哪一个字段我都不知道；也要把status的状态发过去；
-        4.对应的列是status；
-        5.更新操作别忘记了，我就是这一步忘记了；
-    6.删除操作
-        1.请求的路径：delete /dish
-    7.菜品的批量起售停售
-        批量停售：/dish/status/0 ids：数组
-        批量起售：/dish/status/1 ids：数组
-        可以在上面起售停售的代码改出来就行了。那么就是遍历ids数组即可；
-    8.菜品的批量删除
-        直接就是把数组传过来了，那也还是遍历；
-第五天
-    1.新增套餐
-        1.在套餐管理页面，点击新建菜单，就会跳转到：page -&gt; combo -&gt; add.html页面；
-        2.同时页面会发送ajax请求，得到type=2时的套餐分类与type=1时的菜品分类；
-        3.在菜品分类里面，发送ajax请求，将菜品分类里面的菜品进行展示；
-            1.GET http://localhost:8080/dish/list?categoryId=1397844263642378242
-            2.返回一个R.success(list);
-        4.图片的上传与下载，这个我不管了；
-        5.点击保存按钮，发送ajax请求到服务器进行保存；
-            1.POST http://localhost:8080/setmeal
-            2.先把框架搭建起来，然后看一下请求的数据是什么样的；
-    2.套餐页面分页查询
-        1.观察访问路径与方式还有请求的参数；
-            http://localhost:8080/setmeal/page?page=1&amp;pageSize=10 GET
-        2.搭建基本骨架，顺便把R.success(pageInfo)返回了；
-        3.但是页面有一条信息是套餐分类没有显示出来，在dto中有这么一个属性，因此我需要返回的是dto；
-    3.删除功能实现
-        人家做的就是比我的好看，我也按照人家说的做一下吧；
-        1.页面发送请求看一下请求路径与请求方式，请求参数；
-        2.比我多的一部是，他先查询status；
-        3.不得不佩服我的聪明才智想起来删除的不是Id，而是setmeal::getDishId;
-        4.到此为止！！！！
-第六天
-    移动端验证码登录
-        1.注册阿里云的短信服务；
-        2.用户登录名称 reggie@1201454829179112.onaliyun.com
-                        AccessKey ID LTAI5tCZfBHmDU1K7n6Fsgqn
-                    AccessKey Secret v3f8rWMptsJAjW7JtbaKTQ9e0DLMdf
-        3.短信发送
-            主要分为两次请求
-                1.点击获取验证码，发送一次验证码；
-                    1.修改登录拦截器；
-                    2.
-                2.点击登录，观察是否能登陆成功；
-        4.套餐的修改功能
-            1.发送一个请求观察路径，访问方式，请求参数
-                GET http://localhost:8080/setmeal/1415580119015145474
-            2.搭建基本框架
-            3.我不是应该先回显数据吗，已经回显了，点击保存按钮，观察发送的请求；
-        5.套餐的修改状态功能
-            1.观察请求路径
-                POST
-                http://localhost:8080/setmeal/status/0?ids=1415580119015145474
-            2.搭建基本框架
-            3.只是修改传过来的id对应的数据在setmeal表中的status；
-            4.修改完了，现根据id查询到对应的套餐，然后设置状态为传过去的status设置回去就好了。这种与数据库交互比较大；
-        6.套餐的删除功能
-            1.观察请求路径与请求参数，这次我也带上删除status=0的条件；
-第七天
-    1.地址簿管理
-        人家直接导入，我就是要手写；
-        1.新增地址信息；
-        2.查询指定用户的地址信息
-        3.设置默认地址；即使在sqlyog中，都修改不了is_default的值，我怀疑那个1都是假的；
-        4.修改地址信息；
-    2.菜品展示
-        1.菜品会自动请求/catafory/list,我已经写完了，现在先把购物车的url改一下让他们能够正常访问就好了；
-        2.但是有一个问题，如果对应的菜品，他是具有口味信息的，应该加号位置展示的是规格数据；
-            1.定位出问题的位置，那是因为，虽然我会自动查询菜品，实际上时调用我前面写过的/dish/list；我现在需要查询他的dishFlavor，因此我返回值应该是DishDto；
-            
-        3.解决完之后，发现，点击到套餐之后，就会报400错误，那是因为我需要请求套餐数据但是我没写；
-    3.购物车
-        1.当我点击加号或者选择规格之后，浏览器会发送一个请求；
-        2.先搭基础框架；
-        3.查看数据库要求的非空字段并且注意修改。
-    4.查看购物车
-        1.观察请求，需要先把前面修改的json数据改回去；
-            http://localhost:8080/shoppingCart/list GET；
-    5.清空购物车
-        http://localhost:8080/shoppingCart/clean delete；
-    6.减少菜品
-        /shoppingCart/sub Post
-        观察请求信息，json格式发送一个菜品或者套餐id；
-        然后需要根据user_id与dish_id同时查询，判断当前菜品的number是不是大于一，否则不允许减小。
-        select * from shopping_cart where user_id = ? and dish_id = ?;
-        update shopping_cart set number = number - 1 where (select * from shopping_cart where user_id = ? and dish_id = ?)
-    7.用户下单
-        1.找打对应的发请求的地方；
-            http://localhost:8080/order/submit;POST
-        2.导入实体类order与order_detail两个实体类；
-        3.观察数据库里面的这两张表结构；
-        4.搭建基本框架；
-        5.在仔细观察表结构，看涉及到哪几张表的什么数据；
-        6.填写数据到orders;
-        7.填写数据到order_detail;
-        项目优化
-day1 -&gt; 缓存优化
-        1.搭建环境
-            1.将代码交给git管理；
-            2.导入maven坐标；
-            3.序列化配置文件；
-        2.缓存短信验证码
-            1.原本的验证码是存在session中的，现在我要放在redis中，启动redis服务器；
-            2.在UserController中，注入redisTemplate,并且存数据；
-            3.登陆成功之后，把redis中的验证码清除；
-        3.缓存菜品
-            1.先观察，发送的请求到哪一个controller,对应的什么请求路径，然后在此方法中修改即可；
-            http://localhost:8080/dish/list?categoryId=1397844263642378242&amp;status=1
-            2.当第一次请求菜品分类的时候，从数据库中取当前分类到redis中，以后取数据都从redis中获取即可；
-                改的很快，不愧是我；
-            3.当菜品修改或者新增之后，需要先把当前缓存的key删除掉，然后访问数据库重新加载。
-        4.Spring Cache
-            1.@EnableCaching :加载启动类上面，代表开启缓存；
-            2.@CachePut(value = &quot;userCache&quot;,key = &quot;#user.id&quot;) :将方法的返回值放在缓存中；(插入语句需要放在缓存中)
-            3.@CacheEvict:将一条或多条数据从缓存中删除(删除，更新，需要缓存中删除)
-            4.@Cacheable:在方法执行前spring先查看缓存中是否有数据，如果有数据，则直接返回缓存数据；若没有数据，调用方法并将方法返回值放到缓存中.(查询)
-            5.使用redis技术来缓存
-                导入两个起步依赖；
-                写配置文件中的redis配置；
-        5.缓存套餐
-            1.导入起步依赖
-            2.yml配置文件；
-            3.启动类开启注解；
-            4.对应的方法加不同的注解：
-                1.查询方法：@Cacheable
-        http://localhost:8080/setmeal/list?categoryId=1413342269393674242&amp;status=1
-                2.新增或者删除：@CacheEvict
-    day2 -&gt; 读写分离
-        1.mysql主从复制
-        2.读写分离案例
-        3.项目读写分离
 </code></pre>
 
       
